@@ -23,9 +23,11 @@ namespace IdentityServer.Data.Extensions
         /// <param name="configuration">The <see cref="IConfiguration"/>.</param>
         public static void AddDatabaseLayer(this IServiceCollection services, IConfiguration configuration)
         {
+            var connectionString = Environment.GetEnvironmentVariable("GOOGLE_CLOUD_SQL");
+
             services.AddDbContext<AspNetCoreIdentityContext>(options =>
             {
-                options.UseNpgsql(Environment.GetEnvironmentVariable("GOOGLE_CLOUD_SQL"));
+                options.UseNpgsql(connectionString);
             });
         }
     }

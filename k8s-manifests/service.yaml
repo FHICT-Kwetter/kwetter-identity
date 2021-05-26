@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: kwetter-identity-server
+spec:
+  selector:
+    app: kwetter-identity-server
+  ports:
+    - protocol: TCP
+      name: http
+      targetPort: 80
+      port: 80
