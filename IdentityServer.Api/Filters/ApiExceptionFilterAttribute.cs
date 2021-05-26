@@ -32,6 +32,9 @@ namespace IdentityServer.Api.Filters
                 case UserNotFoundException:
                     context.Result = new NotFoundObjectResult(new ApiExceptionResponse() { Message = context.Exception.Message });
                     return;
+                default:
+                    context.Result = new BadRequestObjectResult(new ApiExceptionResponse() { Message = context.Exception.Message });
+                    return;
             }
         }
     }
